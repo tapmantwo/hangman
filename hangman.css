@@ -1,0 +1,20 @@
+#word {
+    font-size: 48px;
+    list-style: none;
+}
+
+#word li {
+    display: inline-block;
+    text-decoration: underline;
+}
+
+#incorrect li {
+    color: red;
+    text-decoration: line-through;
+}
+
+#main {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}

@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Hangman!</title>
+        <link rel="stylesheet" href="hangman.css">
+        <script>
+            function SetUpWord() {
+                const word = 'cheese'
+                const list = document.getElementById('word')
+                for(let i = 0; i < word.length; i++) {
+                    const item = document.createElement('li')
+                    const value = document.createTextNode('&nbsp;')
+                    item.appendChild(value)
+                    list.appendChild(item)
+                }
+            }
+
+            window.addEventListener('load', function() {
+                SetUpWord();
+            })
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <div id="hangman picture">
+                <img src="./hangman.jpeg">
+            </div>
+            <div id="letter entry">
+                <div id="guessed correctly">
+                    <ol id="word">
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>E</li>
+                        <li>E</li>
+                        <li>&nbsp;</li>
+                        <li>E</li>
+                    </ol>
+                </div>
+                <div id="guessed incorrectly">
+                    <ul id="incorrect">
+                        <li>A</li>
+                        <li>O</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
