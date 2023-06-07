@@ -7,6 +7,10 @@
             window.addEventListener('load', function() {
                 SetUpWord();
             })
+            window.addEventListener('keydown', function (e) {
+                LetterGuessed(e.key);
+                SetUpWord();
+            }, false);
         </script>
     </head>
     <body>
