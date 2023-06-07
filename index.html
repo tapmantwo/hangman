@@ -6,10 +6,12 @@
         <script>
             window.addEventListener('load', function() {
                 SetUpWord();
+                SetUpIncorrectGuesses();
             })
             window.addEventListener('keydown', function (e) {
-                LetterGuessed(e.key);
+                LetterGuessed(e.key.toLowerCase());
                 SetUpWord();
+                SetUpIncorrectGuesses();
             }, false);
         </script>
     </head>

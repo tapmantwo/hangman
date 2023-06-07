@@ -30,3 +30,14 @@ function LetterGuessed(letter) {
         incorrectGuesses.push(letter)
     }
 }
+
+function SetUpIncorrectGuesses() {
+    const list = document.getElementById('incorrect')
+    DeleteChildren(list)
+    for(let i = 0; i < incorrectGuesses.length; i++) {
+        const item = document.createElement('li')
+        const value = document.createTextNode(incorrectGuesses[i])
+        item.appendChild(value)
+        list.appendChild(item)
+    }
+}
