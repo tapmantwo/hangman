@@ -1,4 +1,5 @@
 const word = 'cheese'
+let gameOver = false
 const correctGuesses = []
 const incorrectGuesses = []
 function SetUpWord() {
@@ -24,11 +25,16 @@ function DeleteChildren(element) {
 }
 
 function LetterGuessed(letter) {
-    if(word.includes(letter)) {
-        correctGuesses.push(letter)
-    }else{
-        incorrectGuesses.push(letter)
-    }
+    if(gameOver === false) {
+        if(word.includes(letter)) {
+            correctGuesses.push(letter)
+        }else if(!incorrectGuesses.includes(letter)){
+            incorrectGuesses.push(letter)
+        }
+        if(incorrectGuesses.length === 7) {
+            gameOver = true
+        }
+    }}
 }
 
 function SetUpIncorrectGuesses() {
