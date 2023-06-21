@@ -41,3 +41,14 @@ function SetUpIncorrectGuesses() {
         list.appendChild(item)
     }
 }
+
+function UpdateGame() {
+    SetUpWord();
+    SetUpIncorrectGuesses();
+    SetUpImage();
+}
+
+function SetUpImage() {
+    const image = document.getElementById('images')
+    image.src = incorrectGuesses.length + 1 + ".jpg"
+}

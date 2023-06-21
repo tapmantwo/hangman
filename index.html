@@ -5,20 +5,18 @@
         <script src="./hangman.js"></script>
         <script>
             window.addEventListener('load', function() {
-                SetUpWord();
-                SetUpIncorrectGuesses();
+                UpdateGame();
             })
             window.addEventListener('keydown', function (e) {
                 LetterGuessed(e.key.toLowerCase());
-                SetUpWord();
-                SetUpIncorrectGuesses();
+                UpdateGame();
             }, false);
         </script>
     </head>
     <body>
         <div id="main">
             <div id="hangman picture">
-                <img src="./hangman.jpeg">
+                <img src="./hangman.jpeg" id = "images">
             </div>
             <div id="letter entry">
                 <div id="guessed correctly">
