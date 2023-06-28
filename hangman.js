@@ -1,4 +1,84 @@
-const word = 'cheese'
+
+const words = [
+    "apple",
+    "arrow",
+    "beach",
+    "bench",
+    "bible",
+    "bread",
+    "brick",
+    "brush",
+    "chair",
+    "child",
+    "church",
+    "cloud",
+    "coast",
+    "earth",
+    "field",
+    "flower",
+    "forest",
+    "fruit",
+    "glass",
+    "glove",
+    "grape",
+    "grass",
+    "guide",
+    "heart",
+    "horse",
+    "house",
+    "island",
+    "knife",
+    "lemon",
+    "light",
+    "market",
+    "melon",
+    "money",
+    "month",
+    "mount",
+    "mouse",
+    "music",
+    "night",
+    "ocean",
+    "paint",
+    "paper",
+    "phone",
+    "plane",
+    "plant",
+    "plate",
+    "puppy",
+    "rabbit",
+    "river",
+    "robot",
+    "rocky",
+    "salad",
+    "shark",
+    "shirt",
+    "sight",
+    "skirt",
+    "slope",
+    "smile",
+    "snake",
+    "space",
+    "sugar",
+    "table",
+    "teeth",
+    "tiger",
+    "title",
+    "torch",
+    "train",
+    "valve",
+    "voice",
+    "water",
+    "wheel",
+    "window",
+    "woman",
+    "world",
+    "yacht",
+    "zebra"
+  ]
+  
+const word = PickWord()
+console.log(word)
 let gameOver = false
 const correctGuesses = []
 const incorrectGuesses = []
@@ -34,7 +114,7 @@ function LetterGuessed(letter) {
         if(incorrectGuesses.length === 7) {
             gameOver = true
         }
-    }}
+    }
 }
 
 function SetUpIncorrectGuesses() {
@@ -57,4 +137,9 @@ function UpdateGame() {
 function SetUpImage() {
     const image = document.getElementById('images')
     image.src = incorrectGuesses.length + 1 + ".jpg"
+}
+
+function PickWord() {
+    const randomWord = Math.floor((Math.random() * words.length - 1));
+    return words[randomWord]
 }
