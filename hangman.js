@@ -105,6 +105,10 @@ function DeleteChildren(element) {
 }
 
 function LetterGuessed(letter) {
+    const charCode = letter.charCodeAt(0);
+    if(charCode < 97 || charCode > 122 || letter.length > 1) {
+        return
+    }
     if(gameOver === false) {
         if(word.includes(letter)) {
             correctGuesses.push(letter)
