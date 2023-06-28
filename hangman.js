@@ -77,9 +77,10 @@ const words = [
     "zebra"
   ]
   
+const gameStates = {playing:0, won:1, lost:2}
 const word = PickWord()
 console.log(word)
-let gameOver = false
+let currentState = gameStates.playing
 const correctGuesses = []
 const incorrectGuesses = []
 function SetUpWord() {
@@ -109,14 +110,14 @@ function LetterGuessed(letter) {
     if(charCode < 97 || charCode > 122 || letter.length > 1) {
         return
     }
-    if(gameOver === false) {
+    if(currentState === gameStates.playing) {
         if(word.includes(letter)) {
             correctGuesses.push(letter)
         }else if(!incorrectGuesses.includes(letter)){
             incorrectGuesses.push(letter)
         }
         if(incorrectGuesses.length === 7) {
-            gameOver = true
+            currentState = gameStates.lost
         }
     }
 }
@@ -132,10 +133,27 @@ function SetUpIncorrectGuesses() {
     }
 }
 
+function ShowGameOver() {
+    const gameOverScreen = document.getElementById("game over")
+    gameOverScreen.style.display = 'block'
+    const lostWord = document.getElementById("lost word")
+    lostWord.innerText = word
+}
+
+function HideGameOver() {
+    const gameOverScreen = document.getElementById("game over")
+    gameOverScreen.style.display = 'none'
+}
+
 function UpdateGame() {
     SetUpWord();
     SetUpIncorrectGuesses();
     SetUpImage();
+    if(currentState === gameStates.lost) {
+        ShowGameOver();
+    }else{
+        HideGameOver();
+    }
 }
 
 function SetUpImage() {
