@@ -5,11 +5,11 @@
         <script src="./hangman.js"></script>
         <script>
             window.addEventListener('load', function() {
-                UpdateGame();
+                RenderGame();
             })
             window.addEventListener('keydown', function (e) {
                 LetterGuessed(e.key.toLowerCase());
-                UpdateGame();
+                RenderGame();
             }, false);
         </script>
     </head>

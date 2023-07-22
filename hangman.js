@@ -83,7 +83,7 @@ console.log(word)
 let currentState = gameStates.playing
 const correctGuesses = []
 const incorrectGuesses = []
-function SetUpWord() {
+function RenderWord() {
     const list = document.getElementById('word')
     DeleteChildren(list)
     for(let i = 0; i < word.length; i++) {
@@ -122,7 +122,7 @@ function LetterGuessed(letter) {
     }
 }
 
-function SetUpIncorrectGuesses() {
+function RenderIncorrectGuesses() {
     const list = document.getElementById('incorrect')
     DeleteChildren(list)
     for(let i = 0; i < incorrectGuesses.length; i++) {
@@ -145,10 +145,10 @@ function HideGameOver() {
     gameOverScreen.style.display = 'none'
 }
 
-function UpdateGame() {
-    SetUpWord();
-    SetUpIncorrectGuesses();
-    SetUpImage();
+function RenderGame() {
+    RenderWord();
+    RenderIncorrectGuesses();
+    RenderImage();
     if(currentState === gameStates.lost) {
         ShowGameOver();
     }else{
@@ -156,7 +156,7 @@ function UpdateGame() {
     }
 }
 
-function SetUpImage() {
+function RenderImage() {
     const image = document.getElementById('images')
     image.src = incorrectGuesses.length + 1 + ".jpg"
 }
