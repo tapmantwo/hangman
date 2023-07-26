@@ -105,6 +105,17 @@ function DeleteChildren(element) {
     }
 }
 
+function CheckIfWordIsGuessed() {
+    for(let i = 0; i < word.length; i++) {
+        if(!correctGuesses.includes(word[i])) {
+            return false
+        }
+        
+    }
+    return true
+    
+}
+
 function LetterGuessed(letter) {
     const charCode = letter.charCodeAt(0);
     if(charCode < 97 || charCode > 122 || letter.length > 1) {
@@ -113,6 +124,9 @@ function LetterGuessed(letter) {
     if(currentState === gameStates.playing) {
         if(word.includes(letter)) {
             correctGuesses.push(letter)
+            if(CheckIfWordIsGuessed()) {
+                currentState = gameStates.won
+            }
         }else if(!incorrectGuesses.includes(letter)){
             incorrectGuesses.push(letter)
         }
@@ -145,14 +159,29 @@ function HideGameOver() {
     gameOverScreen.style.display = 'none'
 }
 
+function ShowGameWon() {
+    const gameWonScreen = document.getElementById("game won")
+    gameWonScreen.style.display = 'block'
+    const wonWord = document.getElementById("won word")
+    wonWord.innerText = word
+}
+
+function HideGameWon() {
+    const gameWonScreen = document.getElementById("game won")
+    gameWonScreen.style.display = 'none'
+}
+
 function RenderGame() {
     RenderWord();
     RenderIncorrectGuesses();
     RenderImage();
     if(currentState === gameStates.lost) {
         ShowGameOver();
+    }else if(currentState === gameStates.won){
+        ShowGameWon();
     }else{
         HideGameOver();
+        HideGameWon();
     }
 }
 
